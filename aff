@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>點點賺分潤計畫 618 帶貨派對</title>
+    <style>
+        /* 基礎設定 */
+        :root {
+            --momo-pink: #E60044;
+            --momo-dark: #B30035;
+            --gold: #FFD700;
+            --bg-gray: #F8F9FA;
+            --text-dark: #333333;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
+        }
+        body {
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        
+        /* 按鈕設計 */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #8B4500;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.6);
+        }
+        .text-center { text-align: center; }
+
+        /* 主視覺區塊 */
+        .hero {
+            background: linear-gradient(135deg, var(--momo-pink), #FF4D85);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 20px rgba(230, 0, 68, 0.2);
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 900;
+        }
+
+        /* 區塊通用設定 */
+        .section-title {
+            font-size: 2rem;
+            color: var(--momo-pink);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* 區塊一：四大品牌 */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .brand-box {
+            background: white;
+            border: 2px solid #FFE4EE;
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--momo-pink);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .brand-box:hover {
+            border-color: var(--momo-pink);
+            transform: translateY(-5px);
+        }
+
+        /* 區塊二：熱門商品 */
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .product-box {
+            background: white;
+            border-radius: 10px;
+            padding: 30px 10px;
+            text-align: center;
+            border: 1px solid #EEE;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .product-box .img-placeholder {
+            width: 100%;
+            height: 120px;
+            background-color: #F0F0F0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #AAA;
+        }
+
+        /* 區塊三：社群推廣王 */
+        .reward-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .reward-card {
+            background: white;
+            border-left: 8px solid var(--momo-pink);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .reward-card h3 {
+            text-align: left;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ranking-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            background: #FFF5F8;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .ranking-list li {
+            font-size: 1.1rem;
+            border-bottom: 1px dashed #FFC0CB;
+            padding: 5px 0;
+        }
+        .ranking-list li strong { color: var(--momo-pink); }
+
+        /* 區塊四：尊榮特權 */
+        .vip-section {
+            background: linear-gradient(135deg, #1A1A1A, #333333);
+            color: white;
+            border-radius: 20px;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .vip-section::before {
+            content: 'VIP';
+            position: absolute;
+            font-size: 8rem;
+            color: rgba(255, 215, 0, 0.05);
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 900;
+        }
+        .vip-section h2 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .vip-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* 手機版微調 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero h2 { font-size: 1.3rem; }
+            .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 主視覺 -->
+    <header class="hero">
+        <h1>【點點賺分潤計畫 618 帶貨派對】</h1>
+        <h2>全站狂飆，8.0% 回饋震撼來襲！</h2>
+    </header>
+
+    <!-- 區塊一：無腦推廣 -->
+    <section class="container">
+        <h2 class="section-title">無腦推廣，基礎戰力加碼</h2>
+        <p class="section-subtitle">🔥 618 全站撒幣！推廣無腦賺，回饋直衝 <strong style="color:var(--momo-pink); font-size:1.5rem;">15.0%</strong> 起</p>
+        <div class="grid-4">
+            <div class="brand-box">強檔品牌 A</div>
+            <div class="brand-box">強檔品牌 B</div>
+            <div class="brand-box">強檔品牌 C</div>
+            <div class="brand-box">強檔品牌 D</div>
+        </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: #E0E0E0; max-width: 1000px; margin: 0 auto;">
+
+    <!-- 區塊二：熱門商品 -->
+    <section class="container">
+        <h2 class="section-title">這也有分潤？熱門商品彙整</h2>
+        <p class="section-subtitle">精選 10 大爆品，好推好賺！</p>
+        <div class="grid-5">
+            <!-- 產生10個商品框 -->
+            <script>
+                for(let i=1; i<=10; i++) {
+                    document.write(`
+                        <div class="product-box">
+                            <div class="img-placeholder">商品圖 ${i}</div>
+                            <h4>熱銷好物 ${i}</h4>
+                            <p style="color: #E60044; font-weight:bold; margin-top:10px;">高額分潤</p>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: #E0E0E0; max-width: 1000px; margin: 0 auto;">
+
+    <!-- 區塊三：社群推廣王 -->
+    <section class="container">
+        <h2 class="section-title">👑 社群推廣王</h2>
+        <p class="section-subtitle">高額 mo 幣等你來拿，挑戰極限轉換！</p>
+        
+        <div class="reward-cards">
+            <!-- 首發王 -->
+            <div class="reward-card">
+                <h3>🚀 1. 首發王</h3>
+                <p>首 <strong>100 名</strong>推廣並張貼連結回傳，贈送 <strong>100元 mo 幣</strong>！先搶先贏，手速即財富。</p>
+            </div>
+
+            <!-- 業績王 -->
+            <div class="reward-card">
+                <h3>💰 2. 業績王</h3>
+                <p style="margin-bottom: 15px;">活動期間業績排名前 20 名，給予霸主級獎勵：</p>
+                <ul class="ranking-list">
+                    <li>Top 1：<strong>15,000</strong> mo 幣</li>
+                    <li>Top 2：<strong>10,000</strong> mo 幣</li>
+                    <li>Top 3：<strong>8,000</strong> mo 幣</li>
+                    <li>Top 4-5：<strong>5,000</strong> mo 幣</li>
+                    <li>Top 6-10：<strong>2,000</strong> mo 幣</li>
+                    <li>Top 11-20：<strong>1,000</strong> mo 幣</li>
+                </ul>
+            </div>
+
+            <!-- 推廣王 -->
+            <div class="reward-card">
+                <h3>📢 3. 推廣王</h3>
+                <p>首 <strong>20 名</strong>發布超過 5 篇文章的推廣者，直接贈送 <strong>500元 mo 幣</strong>！流量製造機就是你。</p>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="#" class="btn">👉 立即點此：活動報名連結</a>
+        </div>
+    </section>
+
+    <!-- 區塊四：尊榮特權 -->
+    <section class="container" style="padding-bottom: 80px;">
+        <div class="vip-section">
+            <h2>Top 帶貨官專屬特權！限量神券，助你轉換率翻倍</h2>
+            <p>粉絲嫌不夠便宜？這張專屬折扣碼讓你成為粉絲眼中的神！</p>
+            <a href="#" class="btn" style="background: linear-gradient(135deg, #FF4D85, #E60044); color: white; box-shadow: 0 4px 15px rgba(230, 0, 68, 0.4);">💎 申請專屬折扣碼</a>
+        </div>
+    </section>
+
+</body>
+</html>
