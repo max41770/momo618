@@ -5,327 +5,728 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>點點賺分潤計劃 618 帶貨派對</title>
     <style>
-        /* 基礎設定 */
+        /* 核心奢華電商配色 */
         :root {
             --momo-pink: #E60044;
-            --momo-dark: #B30035;
+            --momo-neon-pink: #FF2E74;
+            --momo-dark: #A3002E;
+            --gold-light: #FFE875;
             --gold: #FFD700;
-            --bg-gray: #F8F9FA;
-            --text-dark: #333333;
+            --gold-dark: #FF9F00;
+            --vip-black: #1A1A24;
+            --vip-dark: #111116;
+            --text-dark: #2B2D42;
+            --text-muted: #6C757D;
+            --bg-light: #FFF8FA;
+            --card-shadow: 0 12px 30px rgba(230, 0, 68, 0.06);
+            --hover-shadow: 0 20px 40px rgba(230, 0, 68, 0.15);
         }
+
+        /* 基礎樣式重設 */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
+            font-family: 'PingFang TC', 'Heiti TC', 'Apple LiGothic Medium', 'Microsoft JhengHei', sans-serif;
         }
+
         body {
-            background-color: var(--bg-gray);
+            background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-        h1, h2, h3 {
-            text-align: center;
-        }
-        
-        /* 按鈕設計 */
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #8B4500;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 20px;
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.6);
-        }
-        .text-center { text-align: center; }
-
-        /* 主視覺區塊 */
-        .hero {
-            background: linear-gradient(135deg, var(--momo-pink), #FF4D85);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            box-shadow: 0 10px 20px rgba(230, 0, 68, 0.2);
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        .hero h2 {
-            font-size: 1.8rem;
-            color: var(--gold);
-            font-weight: 900;
+            padding: 60px 20px;
         }
 
-        /* 區塊通用設定 */
+        /* 標題與副標題通用樣式 */
         .section-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--momo-pink);
+            text-align: center;
             margin-bottom: 10px;
-            font-weight: bold;
+            font-weight: 900;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--momo-pink), var(--gold));
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
         .section-subtitle {
             text-align: center;
             font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 30px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 500;
         }
 
-        /* 區塊一：四大品牌 */
+        .date-badge {
+            display: inline-block;
+            background: rgba(236, 0, 68, 0.08);
+            color: var(--momo-pink);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        /* 派對慶典風 Main Hero Banner */
+        .hero {
+            background: radial-gradient(circle at 80% 20%, rgba(255, 92, 141, 0.9) 0%, transparent 50%),
+                        linear-gradient(135deg, var(--momo-dark) 0%, var(--momo-pink) 50%, #FF5E8E 100%);
+            color: white;
+            padding: 100px 20px 120px;
+            text-align: center;
+            position: relative;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            box-shadow: 0 15px 35px rgba(230, 0, 68, 0.25);
+        }
+
+        /* 營造電商大促舞台感背景 */
+        .hero::before {
+            content: '618';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.04);
+            z-index: 1;
+            letter-spacing: -5px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: var(--gold-light);
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 6px;
+        }
+
+        .tagline-container {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px 35px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: inset 0 1px 10px rgba(255,255,255,0.1);
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(212, 163, 0, 0.6);
+        }
+
+        /* 超吸睛大促按鈕 */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: #5A2E00;
+            font-size: 1.3rem;
+            font-weight: 800;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.4), 
+                        inset 0 -4px 0px rgba(0,0,0,0.15),
+                        inset 0 4px 0px rgba(255,255,255,0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 30px;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(255, 165, 0, 0.6),
+                        inset 0 -2px 0px rgba(0,0,0,0.15),
+                        inset 0 4px 0px rgba(255,255,255,0.3);
+            color: #402000;
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* 區塊一：無腦推廣強檔品牌 */
+        .brand-section {
+            background: white;
+            border-radius: 30px;
+            padding: 50px 30px;
+            box-shadow: var(--card-shadow);
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
         .grid-4 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
+
         .brand-box {
-            background: white;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFF5F7 100%);
             border: 2px solid #FFE4EE;
-            border-radius: 15px;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--momo-pink);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        .brand-box:hover {
-            border-color: var(--momo-pink);
-            transform: translateY(-5px);
-        }
-
-        /* 區塊二：熱門商品 */
-        .grid-5 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-        }
-        .product-box {
-            background: white;
-            border-radius: 10px;
-            padding: 30px 10px;
-            text-align: center;
-            border: 1px solid #EEE;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .product-box .img-placeholder {
-            width: 100%;
-            height: 120px;
-            background-color: #F0F0F0;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #AAA;
-        }
-
-        /* 區塊三：社群推廣王 */
-        .reward-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .reward-card {
-            background: white;
-            border-left: 8px solid var(--momo-pink);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        .reward-card h3 {
-            text-align: left;
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .ranking-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 10px;
-            background: #FFF5F8;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .ranking-list li {
-            font-size: 1.1rem;
-            border-bottom: 1px dashed #FFC0CB;
-            padding: 5px 0;
-        }
-        .ranking-list li strong { color: var(--momo-pink); }
-
-        /* 區塊四：尊榮特權 */
-        .vip-section {
-            background: linear-gradient(135deg, #1A1A1A, #333333);
-            color: white;
             border-radius: 20px;
-            padding: 50px 20px;
+            padding: 45px 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            box-shadow: 0 6px 15px rgba(230, 0, 68, 0.02);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        .vip-section::before {
-            content: 'VIP';
+
+        .brand-box::before {
+            content: 'HOT';
             position: absolute;
-            font-size: 8rem;
-            color: rgba(255, 215, 0, 0.05);
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: 900;
+            top: 12px;
+            right: -25px;
+            background: var(--momo-pink);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 25px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            letter-spacing: 1px;
         }
-        .vip-section h2 {
-            color: var(--gold);
-            font-size: 2rem;
-            margin-bottom: 15px;
-            position: relative;
+
+        .brand-box:hover {
+            border-color: var(--momo-neon-pink);
+            color: var(--momo-pink);
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+            background: white;
         }
-        .vip-section p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
+
+        /* 區塊二：10大爆品櫥窗 */
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+            gap: 20px;
+        }
+
+        .product-box {
+            background: white;
+            border-radius: 18px;
+            padding: 20px 15px;
+            text-align: center;
+            border: 1px solid #F0F0F2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
             position: relative;
         }
 
-        /* 手機版微調 */
+        .product-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: #E2E2E8;
+        }
+
+        /* 商品擬真電商外觀 */
+        .product-box .img-placeholder {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #F5F6FA 0%, #EEDEE3 100%);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #9A9EAB;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .product-box .img-placeholder::before {
+            content: '🛍️';
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        .product-box h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 分潤趴數吸睛標籤 */
+        .commission-tag {
+            display: inline-block;
+            background: linear-gradient(90deg, #FFEDF1 0%, #FFE3E9 100%);
+            color: var(--momo-pink);
+            font-size: 0.9rem;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 50px;
+            border: 1px solid rgba(230, 0, 68, 0.1);
+        }
+
+/* 區塊三：社群推廣王獎勵卡片 */
+        .reward-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 強制分為左右均等的兩欄 */
+            gap: 40px; /* 加大左右與上下的間距，讓排版更透氣 */
+            margin-bottom: 40px;
+        }
+
+        .reward-card {
+            background: white;
+            border-radius: 25px; /* 讓圓角稍微圓潤一點，配合放大的卡片 */
+            padding: 50px 40px; /* 大幅增加內距，創造卡片「放大」的視覺效果 */
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(230, 0, 68, 0.03);
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .reward-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .reward-card h3 {
+            text-align: left;
+            font-size: 1.6rem; /* 稍微放大標題字體 */
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+        }
+
+        .reward-card h3 .icon-bg {
+            width: 42px; /* 放大圖示背景 */
+            height: 42px;
+            background: var(--momo-pink);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem; /* 放大圖示 */
+            box-shadow: 0 4px 10px rgba(230, 0, 68, 0.3);
+        }
+
+        .reward-card p {
+            color: #555A64;
+            font-size: 1.15rem; /* 稍微放大內文字體，提升閱讀舒適度 */
+            line-height: 1.8;
+        }
+
+        .reward-card strong {
+            color: var(--momo-pink);
+            font-weight: 800;
+            font-size: 1.3rem; /* 放大重點數字 */
+            background: linear-gradient(to top, #FFE5EC 40%, transparent 40%);
+            padding: 0 2px;
+        }
+
+        /* 業績王排行榜清單 */
+        .reward-card-full {
+            grid-column: 1 / -1;
+        }
+
+        .ranking-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: linear-gradient(180deg, #FFF9FA 0%, #FFF0F4 100%);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 20px;
+            border: 1px solid #FFE1EA;
+        }
+
+        .ranking-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(230, 0, 68, 0.02);
+            border: 1px solid rgba(230, 0, 68, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .ranking-list li:hover {
+            transform: scale(1.01);
+            border-color: var(--momo-pink);
+        }
+
+        .ranking-list li span:first-child {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ranking-list li span:first-child::before {
+            content: '🎯';
+        }
+
+        .ranking-list li strong {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .bonus-amount {
+            color: var(--momo-pink);
+            font-weight: 900;
+            font-size: 1.3rem;
+            background: none !important;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* 區塊四：尊榮黑金高質感 VIP 特權 */
+        .vip-section {
+            background: radial-gradient(circle at 90% 10%, #3A3A4A 0%, transparent 40%),
+                        linear-gradient(135deg, var(--vip-dark) 0%, var(--vip-black) 100%);
+            color: white;
+            border-radius: 28px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #2A2A35;
+        }
+
+        .vip-section::before {
+            content: '👑';
+            position: absolute;
+            font-size: 10rem;
+            opacity: 0.06;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .vip-section h2 {
+            color: var(--gold);
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(255,215,0,0.2);
+        }
+
+        .vip-section p {
+            font-size: 1.25rem;
+            color: #A0A5B5;
+            margin-bottom: 35px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-vip {
+            background: linear-gradient(135deg, var(--momo-neon-pink) 0%, var(--momo-pink) 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(230, 0, 68, 0.4),
+                        inset 0 -4px 0px rgba(0,0,0,0.2),
+                        inset 0 4px 0px rgba(255,255,255,0.2);
+        }
+
+        .btn-vip:hover {
+            background: linear-gradient(135deg, #FF4D85 0%, var(--momo-neon-pink) 100%);
+            color: white;
+            box-shadow: 0 15px 30px rgba(230, 0, 68, 0.6);
+        }
+
+        /* 區塊五：精緻化活動說明與法規 */
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .info-title {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+        }
+
+        .info-title span {
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--momo-pink), var(--gold));
+            border-radius: 4px;
+        }
+
+        .info-list {
+            color: #555A64;
+            font-size: 1rem;
+            line-height: 1.9;
+            padding-left: 20px;
+        }
+
+        .info-list li {
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+
+        .info-list li strong {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* 分隔線美化 */
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #E2E2E8 50%, transparent);
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        /* 完美響應式斷點微調（手機版） */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero h2 { font-size: 1.3rem; }
-            .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
-            .section-title { font-size: 1.6rem; }
+            .hero {
+                padding: 70px 15px 90px;
+                border-bottom-left-radius: 40px;
+                border-bottom-right-radius: 40px;
+            }
+            .hero h1 { font-size: 2.2rem; }
+            .hero h1 span { font-size: 1.3rem; letter-spacing: 3px; }
+            .hero h2 { font-size: 1.4rem; }
+            .section-title { font-size: 1.7rem; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .grid-5 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .reward-cards { grid-template-columns: 1fr; }
+            .vip-section { padding: 45px 20px; }
+            .vip-section h2 { font-size: 1.6rem; }
+            .vip-section p { font-size: 1.05rem; }
+            .info-card { padding: 25px 20px; }
+            .ranking-list li { flex-direction: column; align-items: flex-start; gap: 5px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 主視覺 -->
     <header class="hero">
-        <h1>【點點賺分潤計劃 618 帶貨派對】</h1>
-        <h2>全站狂飆，8.0% 回饋震撼來襲！</h2>
+        <div class="hero-content">
+            <h1>
+                <span>MOMO 點點賺分潤計劃</span>
+                【618 帶貨派對】
+            </h1>
+            <div class="tagline-container">
+                <h2>全站狂飆，8.0% 回饋震撼來襲！</h2>
+            </div>
+        </div>
     </header>
 
-    <!-- 區塊一：無腦推廣 -->
-    <section class="container">
-        <h2 class="section-title">無腦推廣，基礎戰力加碼</h2>
-<p class="section-subtitle" style="margin-bottom: 5px;">6/12(五)-6/21(日)</p>
-        <p class="section-subtitle">🔥 618 全站撒幣！推廣無腦賺，回饋直衝 <strong style="color:var(--momo-pink); font-size:1.5rem;">15.0%</strong> 起</p>
-        <div class="grid-4">
-            <div class="brand-box">強檔品牌 A</div>
-            <div class="brand-box">強檔品牌 B</div>
-            <div class="brand-box">強檔品牌 C</div>
-            <div class="brand-box">強檔品牌 D</div>
+    <section class="container" style="padding-top: 0;">
+        <div class="brand-section">
+            <div style="text-align: center;">
+                <span class="date-badge">活動期間：6/12(五) - 6/21(日)</span>
+            </div>
+            <h2 class="section-title">無腦推廣，基礎戰力加碼</h2>
+            <p class="section-subtitle">🔥 618 全站大撒幣！推廣無腦賺，回饋直衝 <span style="color:var(--momo-pink); font-weight:900; font-size:1.6rem;">15.0%</span> 起</p>
+            
+            <div class="grid-4">
+                <div class="brand-box">👑 強檔美妝品牌 A</div>
+                <div class="brand-box">⚡ 頂級家電品牌 B</div>
+                <div class="brand-box">👟 潮流運動品牌 C</div>
+                <div class="brand-box">💊 熱銷保健品牌 D</div>
+            </div>
         </div>
     </section>
 
-    <hr style="border: 0; height: 1px; background: #E0E0E0; max-width: 1000px; margin: 0 auto;">
+    <hr class="section-divider">
 
-    <!-- 區塊二：熱門商品 -->
     <section class="container">
         <h2 class="section-title">這也有分潤？熱門商品彙整</h2>
-        <p class="section-subtitle">精選 10 大爆品，好推好賺！</p>
+        <p class="section-subtitle">精選 10 大神級爆品，轉單超輕鬆、好推更好賺！</p>
+        
         <div class="grid-5">
-            <!-- 產生10個商品框 -->
-            <script>
-                for(let i=1; i<=10; i++) {
-                    document.write(`
-                        <div class="product-box">
-                            <div class="img-placeholder">商品圖 ${i}</div>
-                            <h4>熱銷好物 ${i}</h4>
-                            <p style="color: #E60044; font-weight:bold; margin-top:10px;">高額分潤</p>
-                        </div>
-                    `);
-                }
-            </script>
+            <div class="product-box">
+                <div class="img-placeholder">美妝保養首選</div>
+                <h4>熱銷明星精華液</h4>
+                <div class="commission-tag">高額 15% 分潤</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">3C 智慧家電</div>
+                <h4>智能降噪藍牙耳機</h4>
+                <div class="commission-tag">限時加碼分潤</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">風靡日韓藥妝</div>
+                <h4>膠原蛋白飲囤貨組</h4>
+                <div class="commission-tag">超高轉換爆品</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">居家質感生活</div>
+                <h4>極簡風负離子吹風機</h4>
+                <div class="commission-tag">高額分潤</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">潮流運動時尚</div>
+                <h4>復古老爹運動鞋</h4>
+                <div class="commission-tag">激推 12% 回饋</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">智能穿戴科技</div>
+                <h4>多功能運動智慧手錶</h4>
+                <div class="commission-tag">高額分潤</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">超人氣零食箱</div>
+                <h4>澎湃箱日韓零食組</h4>
+                <div class="commission-tag">網紅團購爆款</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">高效廚房家電</div>
+                <h4>萬用多功能氣炸鍋</h4>
+                <div class="commission-tag">高額分潤</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">日常極致呵護</div>
+                <h4>天然有機保濕沐浴組</h4>
+                <div class="commission-tag">穩定回購王</div>
+            </div>
+            <div class="product-box">
+                <div class="img-placeholder">人氣母嬰用品</div>
+                <h4>頂級超薄透氣紙尿褲</h4>
+                <div class="commission-tag">媽媽群高轉換</div>
+            </div>
         </div>
     </section>
 
-    <hr style="border: 0; height: 1px; background: #E0E0E0; max-width: 1000px; margin: 0 auto;">
+    <hr class="section-divider">
 
-<!-- 區塊三：社群推廣王 -->
     <section class="container">
-        <h2 class="section-title">👑 社群推廣王</h2>
-        <p class="section-subtitle" style="margin-bottom: 5px;">6/12(五)-6/30(二)</p>
-        <p class="section-subtitle">高額 mo 幣等你來拿，挑戰極限轉換！</p>
+        <div style="text-align: center;">
+            <span class="date-badge">限定期間：6/12(五) - 6/30(二)</span>
+        </div>
+        <h2 class="section-title">👑 社群推廣王挑戰賽</h2>
+        <p class="section-subtitle">超狂驚喜 Mo 幣等您來搶，挑戰您的社群超強轉換力！</p>
+        
         <div class="reward-cards">
-            <!-- 首發王 -->
             <div class="reward-card">
-                <h3>🚀 1. 首發王</h3>
-                <p>618 首 <strong>200 名</strong>推廣並張貼連結回傳，即贈送 <strong>50 mo 幣</strong>！先搶先贏。</p>
+                <h3><span class="icon-bg">🚀</span> 1. 首發王</h3>
+                <p>618 開跑首 <strong>200 名</strong> 推廣並成功將貼文連結回傳至表單者，免門檻即贈送 <strong class="bonus-amount">50 mo 幣</strong>！先搶先贏，額滿為止。</p>
             </div>
 
-            <!-- 推廣王 -->
             <div class="reward-card">
-                <h3>📢 2. 推廣王</h3>
-                <p style="margin-bottom: 15px;">活動期間首<strong>50名</strong>，推廣至少<strong>5</strong>篇文章並回傳，即贈送<strong>200 mo幣</strong>。</p>
+                <h3><span class="icon-bg">📢</span> 2. 推廣王</h3>
+                <p>活動期間內最快達標的前 <strong>50 名</strong> 推廣者，於社群推廣至少 <strong>5 篇</strong> 有效文章並回傳，即贈送 <strong class="bonus-amount">200 mo 幣</strong>。</p>
+            </div>
+
+            <div class="reward-card reward-card-full">
+                <h3><span class="icon-bg">💰</span> 3. 業績王</h3>
+                <p>頂級流量製造機看過來！活動期間累積推廣業績只要達到以下指定門檻，免抽獎直接帶走對應的 <strong>mo 幣超級加碼回饋</strong>：</p>
+                
+                <ul class="ranking-list">
+                    <li>
+                        <span>累積業績達 <strong>100,000 元 (含)</strong> 以上</span>
+                        <span class="bonus-amount">🎁 贈 3,000 mo 幣</span>
+                    </li>
+                    <li>
+                        <span>累積業績達 <strong>50,000 元 (含)</strong> 以上</span>
+                        <span class="bonus-amount">🎁 贈 1,500 mo 幣</span>
+                    </li>
+                    <li>
+                        <span>累積業績達 <strong>10,000 元 (含)</strong> 以上</span>
+                        <span class="bonus-amount">🎁 贈 300 mo 幣</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-     <div class="reward-card">
-    <h3>💰 3. 業績王</h3>
-    <p style="margin-bottom: 15px;">活動期間業績達指定門檻，即可獲得 <strong>mo幣回饋</strong>！流量製造機就是你。</p>
-    
-    <ul class="ranking-list" style="display: flex; flex-direction: column; gap: 8px;">
-        <li style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 10px 5px;">
-            <span>業績累積達 <strong style="font-size: 1.2rem;">100,000元(含)</strong> 以上</span>
-            <span style="color: var(--momo-pink); font-weight: bold; font-size: 1.2rem;">贈送 3,000 mo幣</span>
-        </li>
-        <li style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 10px 5px;">
-            <span>業績累積達 <strong style="font-size: 1.2rem;">50,000元(含)</strong> 以上</span>
-            <span style="color: var(--momo-pink); font-weight: bold; font-size: 1.2rem;">贈送 1,500 mo幣</span>
-        </li>
-        <li style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-bottom: none; padding: 10px 5px;">
-            <span>業績累積達 <strong style="font-size: 1.2rem;">10,000元(含)</strong> 以上</span>
-            <span style="color: var(--momo-pink); font-weight: bold; font-size: 1.2rem;">贈送 300 mo幣</span>
-        </li>
-    </ul>
-</div>
         
-        <div class="text-center">
-            <a href="https://forms.gle/WBS7bcaTK7sWfm26A" class="btn">👉 立即點此：活動報名連結</a>
+        <div class="text-center" style="text-align: center;">
+            <a href="https://forms.gle/WBS7bcaTK7sWfm26A" class="btn">👉 立即點此：填表報名帶貨派對</a>
         </div>
     </section>
 
-    <!-- 區塊四：尊榮特權 -->
-    <section class="container" style="padding-bottom: 80px;">
+    <hr class="section-divider">
+
+    <section class="container">
         <div class="vip-section">
-            <h2>Top 帶貨官專屬特權！限量神券，助你轉換率翻倍</h2>
-            <p>粉絲嫌不夠便宜？這張專屬折扣碼讓你成為粉絲眼中的神！</p>
-            <a href="https://forms.gle/WBS7bcaTK7sWfm26A" class="btn" style="background: linear-gradient(135deg, #FF4D85, #E60044); color: white; box-shadow: 0 4px 15px rgba(230, 0, 68, 0.4);">💎 申請專屬折扣碼</a>
+            <h2>Top 帶貨官專屬特權！限量神券助轉單率翻倍</h2>
+            <p>擔心粉絲嫌不夠便宜？這張獨家神券折扣碼讓您瞬間變成粉絲眼中的省錢達人！名額有限，即刻申請審核。</p>
+            <a href="https://forms.gle/WBS7bcaTK7sWfm26A" class="btn btn-vip">💎 申請獨家專屬折扣碼</a>
         </div>
     </section>
 
-<!-- 區塊五：活動說明 -->
-    <section class="container" style="padding-top: 0; padding-bottom: 60px;">
-        <div style="background-color: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
-            <h3 style="color: var(--text-dark); font-size: 1.4rem; margin-bottom: 20px; text-align: left; display: flex; align-items: center; gap: 8px;">
-                <span style="display: inline-block; width: 5px; height: 20px; background-color: var(--momo-pink); border-radius: 5px;"></span>
+    <section class="container" style="padding-top: 0;">
+        <div class="info-card">
+            <h3 class="info-title">
+                <span></span>
                 📜 活動說明與注意事項
             </h3>
-            <ol style="color: #666; font-size: 0.95rem; line-height: 1.8; padding-left: 20px; text-align: justify;">
-                <li style="margin-bottom: 10px;"><strong>活動獎勵派發：</strong>活動贈送之 mo 幣，將於活動結束並扣除退貨/取消之無效訂單後，預計於 2026年8月15日 統一匯入推廣者綁定之 momo 會員帳戶中。</li>
-                <li style="margin-bottom: 10px;"><strong>業績王計算門檻：</strong>「指定門檻」皆以活動期間內成立，且過鑑賞期未退貨之「有效訂單」實際結帳金額為準。每位推廣者僅能對應獲得一個最高符合門檻之 mo 幣獎勵，恕不累贈。</li>
-                <li style="margin-bottom: 10px;"><strong>首發王與推廣王：</strong>參加者須透過活動報名連結回傳推廣截圖或貼文網址，名額計算依系統收到表單的「時間戳記」排序為主，額滿為止。</li>
-                <li style="margin-bottom: 10px;"><strong>專屬折扣碼：</strong>限量神券僅限審核通過之 Top 帶貨官領取，每組折扣碼有使用次數上限，請依實際發放之規範為準。</li>
-                <li style="margin-bottom: 10px;">momo 點點賺保留隨時修改、變更、暫停或終止本活動內容之權利，並以網站公告為準。如有任何爭議，本公司保留最終解釋權。</li>
+            <ol class="info-list">
+                <li><strong>活動獎勵派發時程：</strong>本活動贈送之所有 Mo 幣獎勵，將於活動結束後由系統自動扣除退貨、取消之無效訂單。預計於 <strong>2026 年 8 月 15 日</strong> 統一匯入推廣者所綁定之 momo 會員帳戶中。</li>
+                <li><strong>業績王門檻計算方式：</strong>所有累積業績皆以活動期間內成立，且過鑑賞期未退貨之「有效訂單」實際結帳金額為準。每位推廣者僅能獲得一個最高符合門檻之 mo 幣獎勵，恕不重複累贈（例如：達標 10 萬門檻者獲 3,000 mo 幣，不重複獲得 1,500 mo 幣）。</li>
+                <li><strong>首發王與推廣王排名：</strong>參加者必須透過指定活動報名連結正確回傳推廣截圖或貼文網址。名額順序完全依系統後台收到表單的「時間戳記」排序為主，額滿即關閉不另行通知。</li>
+                <li><strong>專屬折扣碼權益：</strong>限量神券僅限審核通過之 Top 帶貨官本人或其渠道領取，每組折扣碼均有使用次數與效期上限，請依實際審核發放之規範為準。</li>
+                <li>momo 點點賺保留隨時修改、變更、暫停或終止本活動內容之權利，一切最新消息皆以點點賺官網最新公告為準。如有任何爭議，本公司保留本活動之最終解釋權。</li>
             </ol>
         </div>
     </section>
